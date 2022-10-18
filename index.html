@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/button.css">
     <link rel="stylesheet" href="./assets/css/modal.css">
@@ -27,7 +30,26 @@
             </tr>
           </thead>  
           <tbody>
-            <tr>Maria</tr>
+            <tr>
+              <td>Maria</td>
+              <td>maria@gmail.com</td>
+              <td>(11) 91072-1111</td>
+              <td>Hamburg</td>
+              <td>
+                <button type="button" class="button green">editar</button>
+                <button type="button" class="button red">excluir</button>
+              </td>
+            </tr>
+            <tr>
+                <td>Joao</td>
+                <td>jo@gmail.com</td>
+                <td>(11) 92073-1112</td>
+                <td>Erfut</td>
+                <td>
+                  <button type="button" class="button green">editar</button>
+                  <button type="button" class="button red">excluir</button>
+                </td>
+              </tr>
           </tbody>  
         </table>
         <div class="modal" id="modal">
@@ -36,11 +58,11 @@
                     <h2>Novo Cliente</h2>
                     <span class="modal-close" id="modalClose">&#10006;</span>
                 </header>
-                <form class="modal-form">
-                    <input type="text" name="modal-field" placeholder="Nome do Cliente">
-                    <input type="email" name="modal-field" placeholder="E-Mail do Cliente">
-                    <input type="text" name="modal-field" placeholder="Celular do Cliente">
-                    <input type="text" name="modal-field" placeholder="Cidade do Cliente">
+                <form id="form" class="modal-form">
+                    <input type="text" name="modal-field" placeholder="Nome do Cliente" required>
+                    <input type="email" name="modal-field" placeholder="E-Mail do Cliente" required>
+                    <input type="text" name="modal-field" placeholder="Celular do Cliente" required>
+                    <input type="text" name="modal-field" placeholder="Cidade do Cliente" required>
                 </form>
                 <footer class="modal-footer">
                     <button id="salvar" class="button green">Salvar</button>

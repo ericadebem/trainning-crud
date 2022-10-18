@@ -38,6 +38,10 @@ const createClient = (client) => {
     setLocalStorage(dbClient)
 }
 
+const isValidFields = () => {
+    return document.getElementById('form').reportValidity()
+}
+
 //interacao layout
 const saveClient = () => {
     if (isValidFields()) {
