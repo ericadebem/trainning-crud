@@ -1,10 +1,12 @@
-'use strickt'
+'use strict'
 
 const openMdal = () => document.getElementById('modal')
     .classList.add('active')
 
-const closeModal = () => document.getElementById('modal')
-    .classList.remove('active')
+const closeModal = () => {
+    document.getElementById('modal').classList.remove('active')
+    clearFields()
+}
 
 const tempClient = {
     nome: "Erica",
@@ -17,7 +19,6 @@ const getLocalStorage = () => JSON.parse(localStorage.getItem('dbClient')) ?? []
 const setLocalStorage = (dbClient) => localStorage.setItem("dbClient", JSON.stringify(dbClient))
 
 // CRUD - create read update delete
-
 const deleteClient = (index) => {
     const dbClient = readClient()
     dbClient.splice(index, 1)
@@ -43,6 +44,13 @@ const isValidFields = () => {
 }
 
 //interacao layout
+
+const clearFields = () => {
+    const fields = document.querySelectorAll('.modal-field')
+    fields.forEach(field => field.value = " ")
+}
+
+
 const saveClient = () => {
     if (isValidFields()) {
         const cliente = {
@@ -53,8 +61,7 @@ const saveClient = () => {
         }
     
         createClient(client)
-        clearFields()
-        classModal()
+        closeModal()
     }
 }
 
