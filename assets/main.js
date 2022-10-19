@@ -45,7 +45,16 @@ const isValidFields = () => {
 //interacao layout
 const saveClient = () => {
     if (isValidFields()) {
-        console.log("cadastrando clientes")
+        const cliente = {
+            nome: document.getElementById('nome').value,
+            email: document.getElementById('email').value,
+            celular: document.getElementById('celular').value,
+            cidade: document.getElementById('cidade').value
+        }
+    
+        createClient(client)
+        clearFields()
+        classModal()
     }
 }
 
