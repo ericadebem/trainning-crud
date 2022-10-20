@@ -1,18 +1,11 @@
 'use strict'
 
-const openMdal = () => document.getElementById('modal')
+const openModal = () => document.getElementById('modal')
     .classList.add('active')
 
 const closeModal = () => {
-    document.getElementById('modal').classList.remove('active')
     clearFields()
-}
-
-const tempClient = {
-    nome: "Erica",
-    email: "ericadebemm@gmail.com",
-    celular: "0123088990",
-    cidade: "Weimar"
+    document.getElementById('modal').classList.remove('active')
 }  
 
 const getLocalStorage = () => JSON.parse(localStorage.getItem('dbClient')) ?? []
@@ -34,7 +27,7 @@ const updateClient = (index, client) => {
 const readClient = () => getLocalStorage()
 
 const createClient = (client) => {
-    const dbClient = getLocalStorage(dbClient)
+    const dbClient = getLocalStorage()
     dbClient.push(client)
     setLocalStorage(dbClient)
 }
@@ -48,10 +41,11 @@ const isValidFields = () => {
 const clearFields = () => {
     const fields = document.querySelectorAll('.modal-field')
     fields.forEach(field => field.value = " ")
+    document.getElementById('nome').dataset.index = 'new'
 }
 
-
 const saveClient = () => {
+    debugger
     if (isValidFields()) {
         const cliente = {
             nome: document.getElementById('nome').value,
@@ -59,19 +53,48 @@ const saveClient = () => {
             celular: document.getElementById('celular').value,
             cidade: document.getElementById('cidade').value
         }
-    
+        const index = document.getElementById('nome').dataset.index
+        if (index == 'new') {
         createClient(client)
+        updateClient()
         closeModal()
+    } else {
+        updateClient(index, client)
+        updateTable()
+        closeModal()
+        }
     }
 }
+
+const createRow = (client, index) => {
+    const newRow = document.createElement('tr')
+    newRow.innerHTML = `
+        <td>${client.nome}</td>
+        <td>${client.email}</td>
+        <td>${client.clular}</td>
+        <td>${client.cidade}</td>
+        <td>
+        <button type="button" class="button green" id="edit-${index}">Editar</button>
+        <button type="button" class="button red" id="delete-${index}" >Excluir</button>        </td>
+    `
+    document.querySelector('#tableClient>tbody').appendChild(newRow)
+}
+
+
 
 //eventos
 
 document.getElementById('cadastrarCliente')
-    .addEventListener('click', closeModal)
+    .addEventListener('click', openModal)
     
 document.getElementById('modalClose')
     .addEventListener('click', closeModal)    
 
 document.getElementById('salvar')
     .addEventListener('click', saveClient)
+
+document.querySelector('#tableClient>body') 
+    .addEventListener('click', editDelete)
+
+document.getElementById('cancelar')
+    .addEventListener('click', closeModal)    
