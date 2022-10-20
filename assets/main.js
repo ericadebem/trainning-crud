@@ -80,6 +80,15 @@ const createRow = (client, index) => {
     document.querySelector('#tableClient>tbody').appendChild(newRow)
 }
 
+const clearTable = () => {
+    const rows = document.querySelectorAll('#tableClient>tbody tr')
+    rows.forEach(row => row.parentNode.removeChild(row))
+}
+const updateTable = () => {
+    const dbClient = readClient()
+    clearTable()
+    dbClient.forEach(createRow)
+}
 
 
 //eventos
