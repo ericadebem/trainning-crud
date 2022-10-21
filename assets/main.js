@@ -90,7 +90,25 @@ const updateTable = () => {
     dbClient.forEach(createRow)
 }
 
+const editDelete = (event) => {
+    if (event.target.type == 'button') {
 
+        const [action, index] = event.target.id.split('-')
+
+        if (action == 'edit') {
+            editClient(index)
+        } else {
+            const client = readClient()[index]
+            const response = confirm(`Deseja realmente excluir o cliente ${client.nome}`)
+            if (response) {
+                deleteClient(index)
+                updateTable()
+            }
+        }
+    }
+}
+
+updateTable()
 //eventos
 
 document.getElementById('cadastrarCliente')
