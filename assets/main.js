@@ -96,7 +96,13 @@ const editClient = (index) => {
     fillFields(client)
     openModal()
 }
-
+const fillFields = (client) => {
+    document.getElementById('nome').value = client.nome
+    document.getElementById('email').value = client.email
+    document.getElementById('celular').value = client.celular
+    document.getElementById('cidade').value = client.cidade
+    document.getElementById('nome').dataset.index = client.index
+}
 const editDelete = (event) => {
     if (event.target.type == 'button') {
 
