@@ -90,6 +90,13 @@ const updateTable = () => {
     dbClient.forEach(createRow)
 }
 
+const editClient = (index) => {
+    const client = readClient()[index]
+    client.index = index
+    fillFields(client)
+    openModal()
+}
+
 const editDelete = (event) => {
     if (event.target.type == 'button') {
 
