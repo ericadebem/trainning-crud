@@ -47,7 +47,7 @@ const clearFields = () => {
 const saveClient = () => {
     debugger
     if (isValidFields()) {
-        const cliente = {
+        const client = {
             nome: document.getElementById('nome').value,
             email: document.getElementById('email').value,
             celular: document.getElementById('celular').value,
