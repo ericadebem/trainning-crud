@@ -9,8 +9,8 @@ const closeModal = () => {
 }  
 
 
-const getLocalStorage = () => JSON.parse(localStorage.getItem('dbClient')) ?? []
-const setLocalStorage = (dbClient) => localStorage.setItem("dbClient", JSON.stringify(dbClient))
+const getLocalStorage = () => JSON.parse(localStorage.getItem('db_client')) ?? []
+const setLocalStorage = (dbClient) => localStorage.setItem("db_client", JSON.stringify(dbClient))
 
 // CRUD - create read update delete
 const deleteClient = (index) => {
@@ -29,7 +29,7 @@ const readClient = () => getLocalStorage()
 
 const createClient = (client) => {
     const dbClient = getLocalStorage()
-    dbClient.push(client)
+    dbClient.push (client)
     setLocalStorage(dbClient)
 }
 
@@ -57,7 +57,7 @@ const saveClient = () => {
         const index = document.getElementById('nome').dataset.index
         if (index == 'new') {
             createClient(client)
-            updateClient()
+            updateTable()
             closeModal()
         } else {
             updateClient(index, client)
@@ -106,6 +106,7 @@ const editClient = (index) => {
 }
 const editDelete = (event) => {
     if (event.target.type == 'button') {
+
         const [action, index] = event.target.id.split('-')
 
         if (action == 'edit') {
@@ -133,7 +134,7 @@ document.getElementById('modalClose')
 document.getElementById('salvar')
     .addEventListener('click', saveClient)
 
-document.querySelector('#tableClient>body') 
+document.querySelector('#tableClient>tbody') 
     .addEventListener('click', editDelete)
 
 document.getElementById('cancelar')
