@@ -74,8 +74,8 @@ const createRow = (client, index) => {
         <td>${client.clular}</td>
         <td>${client.cidade}</td>
         <td>
-        <button type="button" class="button green" id="edit-${index}">Editar</button>
-        <button type="button" class="button red" id="delete-${index}">Excluir</button>
+          <button type="button" class="button green" data-action="edit">Editar</button>
+          <button type="button" class="button red" data-action="delete">Excluir</button>
         </td>
     `
     document.querySelector('#tableClient>tbody').appendChild(newRow)
@@ -90,13 +90,6 @@ const updateTable = () => {
     clearTable()
     dbClient.forEach(createRow)
 }
-
-const editClient = (index) => {
-    const client = readClient()[index]
-    client.index = index
-    fillFields(client)
-    openModal()
-}
 const fillFields = (client) => {
     document.getElementById('nome').value = client.nome
     document.getElementById('email').value = client.email
@@ -104,9 +97,14 @@ const fillFields = (client) => {
     document.getElementById('cidade').value = client.cidade
     document.getElementById('nome').dataset.index = client.index
 }
+const editClient = (index) => {
+    const client = readClient()[index]
+    client.index = index
+    fillFields(client)
+    openModal()
+}
 const editDelete = (event) => {
     if (event.target.type == 'button') {
-
         const [action, index] = event.target.id.split('-')
 
         if (action == 'edit') {
