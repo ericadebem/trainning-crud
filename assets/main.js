@@ -8,6 +8,7 @@ const closeModal = () => {
     document.getElementById('modal').classList.remove('active')
 }  
 
+
 const getLocalStorage = () => JSON.parse(localStorage.getItem('dbClient')) ?? []
 const setLocalStorage = (dbClient) => localStorage.setItem("dbClient", JSON.stringify(dbClient))
 
@@ -40,7 +41,7 @@ const isValidFields = () => {
 
 const clearFields = () => {
     const fields = document.querySelectorAll('.modal-field')
-    fields.forEach(field => field.value = " ")
+    fields.forEach(field => field.value = "")
     document.getElementById('nome').dataset.index = 'new'
 }
 
@@ -55,13 +56,13 @@ const saveClient = () => {
         }
         const index = document.getElementById('nome').dataset.index
         if (index == 'new') {
-        createClient(client)
-        updateClient()
-        closeModal()
-    } else {
-        updateClient(index, client)
-        updateTable()
-        closeModal()
+            createClient(client)
+            updateClient()
+            closeModal()
+        } else {
+            updateClient(index, client)
+            updateTable()
+            closeModal()
         }
     }
 }
@@ -74,8 +75,8 @@ const createRow = (client, index) => {
         <td>${client.clular}</td>
         <td>${client.cidade}</td>
         <td>
-          <button type="button" class="button green" data-action="edit">Editar</button>
-          <button type="button" class="button red" data-action="delete">Excluir</button>
+          <button type="button" class="button green" id="edit-${index}">Editar</button>
+          <button type="button" class="button red" id="delete-${index}">Excluir</button>
         </td>
     `
     document.querySelector('#tableClient>tbody').appendChild(newRow)

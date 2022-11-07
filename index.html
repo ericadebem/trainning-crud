@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,11 +12,13 @@
     <link rel="stylesheet" href="./assets/css/button.css">
     <link rel="stylesheet" href="./assets/css/modal.css">
     <link rel="stylesheet" href="./assets/css/records.css">
+    
     <title>Training CRUD</title>
 </head>
+
 <body>
     <header>
-        <h1 class="header-title"> Cadastro de Clientes para loja </h1>
+      <h1 class="header-title"> Cadastro de Clientes para loja </h1>
     </header>
     <main>
         <button type="button" class="button blue mobile" id="cadastrarCliente">Cadastrar Clientes</button>
@@ -30,36 +33,7 @@
             </tr>
           </thead>  
           <tbody>
-            <tr>
-              <td>Maria</td>
-              <td>maria@gmail.com</td>
-              <td>(11) 91072-1111</td>
-              <td>Hamburg</td>
-              <td>
-                <button type="button" class="button green">editar</button>
-                <button type="button" class="button red">excluir</button>
-              </td>
-            </tr>
-            <tr>
-              <td>Erica de Bem</td>
-              <td>teste@email.com</td>
-              <td>(11) 91072-1111</td>
-              <td>Weimar</td>
-              <td>
-                <button type="button" class="button green">editar</button>
-                <button type="button" class="button red">excluir</button>
-              </td>
-            </tr>
-            <tr>
-                <td>Joao</td>
-                <td>jo@gmail.com</td>
-                <td>(11) 92073-1112</td>
-                <td>Erfut</td>
-                <td>
-                  <button type="button" class="button green">Editar</button>
-                  <button type="button" class="button red">Excluir</button>
-                </td>
-              </tr>
+        
           </tbody>  
         </table>
         <div class="modal" id="modal">
@@ -74,13 +48,13 @@
                     <input type="text" id="celular" class="modal-field" placeholder="Celular do Cliente" required>
                     <input type="text" id="cidade" class="modal-field" placeholder="Cidade do Cliente" required>
                 </form>
+                <footer class="modal-footer">
+                  <button id="salvar" class="button green">Salvar</button>
+                  <button id="cancelar" class="button blue">Cancelar</button>
+                </footer>
             </div>
         </div>
     </main>
-         <footer class="modal-footer">
-                    <button id="salvar" class="button green">Salvar</button>
-                    <button id="cancelar" class="button blue">Cancelar</button>
-                </footer>
     <footer>
         Erica de Bem - Training CRUD
     </footer>
