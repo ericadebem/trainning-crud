@@ -75,8 +75,8 @@ const createRow = (client, index) => {
         <td>${client.clular}</td>
         <td>${client.cidade}</td>
         <td>
-          <button type="button" class="button green" id="edit-${index}">Editar</button>
-          <button type="button" class="button red" id="delete-${index}">Excluir</button>
+          <button type="button" class="button green" id="edit-${index}">Bearbeiten</button>
+          <button type="button" class="button red" id="delete-${index}">Stornieren</button>
         </td>
     `
     document.querySelector('#tableClient>tbody').appendChild(newRow)
@@ -113,7 +113,7 @@ const editDelete = (event) => {
             editClient(index)
         } else {
             const client = readClient()[index]
-            const response = confirm(`Você deseja realmente excluir o cliente ${client.nome}?`)
+            const response = confirm(`Möchten Sie wirklich löschen: ${client.nome}?`)
             if (response) {
                 deleteClient(index)
                 updateTable()
