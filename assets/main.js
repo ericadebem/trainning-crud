@@ -27,6 +27,16 @@ const updateClient = (index, client) => {
 
 const readClient = () => getLocalStorage()
 
+const getStudants = async() => {
+    try{
+        const response = await axios.get("http://localhost:5050/api")
+        return response.data
+    }catch(error){
+        console.log(error)
+        throw new Error(error)
+    }
+}
+
 const createClient = (client) => {
     const dbClient = getLocalStorage()
     dbClient.push (client)
